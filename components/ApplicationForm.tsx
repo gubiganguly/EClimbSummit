@@ -10,13 +10,15 @@ export default function ApplicationForm() {
   const [formData, setFormData] = useState({
     name: '',
     business: '',
-    email: ''
+    email: '',
+    phone: ''
   });
   
   const [errors, setErrors] = useState({
     name: '',
     business: '',
-    email: ''
+    email: '',
+    phone: ''
   });
   
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -36,7 +38,7 @@ export default function ApplicationForm() {
   
   const validateForm = () => {
     let valid = true;
-    const newErrors = { name: '', business: '', email: '' };
+    const newErrors = { name: '', business: '', email: '', phone: '' };
     
     if (!formData.name.trim()) {
       newErrors.name = 'Name is required';
@@ -56,6 +58,14 @@ export default function ApplicationForm() {
       valid = false;
     }
     
+    if (!formData.phone.trim()) {
+      newErrors.phone = 'Phone number is required';
+      valid = false;
+    } else if (!/^[+]?[(]?[0-9]{3}[)]?[-\s.]?[0-9]{3}[-\s.]?[0-9]{4,6}$/.test(formData.phone)) {
+      newErrors.phone = 'Please enter a valid phone number';
+      valid = false;
+    }
+    
     setErrors(newErrors);
     return valid;
   };
@@ -72,13 +82,14 @@ export default function ApplicationForm() {
       const result = await addLead({
         name: formData.name,
         business: formData.business,
-        email: formData.email
+        email: formData.email,
+        phone: formData.phone
       });
       
       if (result.success) {
         setSubmitStatus('success');
         setIsSubmitted(true);
-        setFormData({ name: '', business: '', email: '' });
+        setFormData({ name: '', business: '', email: '', phone: '' });
       } else {
         setSubmitStatus('error');
         setErrorMessage('Something went wrong. Please try again.');
@@ -155,6 +166,22 @@ export default function ApplicationForm() {
                   className="bg-cream/20 border-cream/30 placeholder:text-cream/50 text-cream"
                 />
                 {errors.email && <p className="mt-1 text-sm text-cream/80">{errors.email}</p>}
+              </div>
+              
+              <div>
+                <label htmlFor="phone" className="block mb-2 font-medium">
+                  Mobile Phone Number
+                </label>
+                <Input
+                  id="phone"
+                  name="phone"
+                  type="tel"
+                  value={formData.phone}
+                  onChange={handleChange}
+                  placeholder="(123) 456-7890"
+                  className="bg-cream/20 border-cream/30 placeholder:text-cream/50 text-cream"
+                />
+                {errors.phone && <p className="mt-1 text-sm text-cream/80">{errors.phone}</p>}
               </div>
               
               <Button 

@@ -1,0 +1,19 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    match /leads/{document} {
+      allow write: if true; // Allows anyone to create leads
+      allow read: if true;  // Allow client-side reading (UI password protection handled separately)
+    }
+    
+    match /events/{document} {
+      allow write: if true; // Allows anyone to create and update events
+      allow read: if true;  // Allows anyone to read events
+    }
+    
+    // For other collections, keep them secure
+    match /{document=**} {
+      allow read, write: if false;
+    }
+  }
+} 

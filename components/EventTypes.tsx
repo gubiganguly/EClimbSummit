@@ -16,28 +16,34 @@ export default function EventTypes() {
             <TabsTrigger value="global">Global Events</TabsTrigger>
           </TabsList>
           
-          <TabsContent value="retreats" className="bg-taupe p-8 rounded-lg">
-            <h3 className="font-spartan text-2xl font-bold mb-4">Private Retreats</h3>
-            <p className="mb-4">
-              Intimate 3-5 day experiences in exceptional locations. Limited to 12-15 participants, our retreats blend structured programming with ample space for serendipity.
-            </p>
-            <div className="aspect-video bg-[url('/placeholder-retreat.jpg')] bg-center bg-cover rounded-md"></div>
+          <TabsContent value="retreats" className="bg-taupe p-8 rounded-lg h-[420px] flex flex-col">
+            <div className="flex-grow">
+              <h3 className="font-spartan text-2xl font-bold mb-4">Private Retreats</h3>
+              <p className="mb-4">
+                Intimate 3-5 day experiences in exceptional locations. Limited to 12-15 participants, our retreats blend structured programming with ample space for serendipity.
+              </p>
+            </div>
+            <div className="aspect-video bg-[url('/private_retreat.jpg')] bg-center bg-cover rounded-md"></div>
           </TabsContent>
           
-          <TabsContent value="dinners" className="bg-taupe p-8 rounded-lg">
-            <h3 className="font-spartan text-2xl font-bold mb-4">Deal-Maker Dinners</h3>
-            <p className="mb-4">
-              Carefully curated evening gatherings bringing together complementary founders, investors, and industry leaders. Limited to 8-10 participants per dinner.
-            </p>
-            <div className="aspect-video bg-[url('/placeholder-dinner.jpg')] bg-center bg-cover rounded-md"></div>
+          <TabsContent value="dinners" className="bg-taupe p-8 rounded-lg h-[420px] flex flex-col">
+            <div className="flex-grow">
+              <h3 className="font-spartan text-2xl font-bold mb-4">Deal-Maker Dinners</h3>
+              <p className="mb-4">
+                Carefully curated evening gatherings bringing together complementary founders, investors, and industry leaders. Limited to 8-10 participants per dinner.
+              </p>
+            </div>
+            <div className="aspect-video bg-[url('/Dinner-Phuket.jpg')] bg-center bg-cover rounded-md"></div>
           </TabsContent>
           
-          <TabsContent value="global" className="bg-taupe p-8 rounded-lg">
-            <h3 className="font-spartan text-2xl font-bold mb-4">Global Events</h3>
-            <p className="mb-4">
-              Quarterly signature events in global cities featuring thought leadership, strategic networking, and exclusive experiences. Limited to 50-100 select participants.
-            </p>
-            <div className="aspect-video bg-[url('/placeholder-global.jpg')] bg-center bg-cover rounded-md"></div>
+          <TabsContent value="global" className="bg-taupe p-8 rounded-lg h-[420px] flex flex-col">
+            <div className="flex-grow">
+              <h3 className="font-spartan text-2xl font-bold mb-4">Global Events</h3>
+              <p className="mb-4">
+                Quarterly signature events in global cities featuring thought leadership, strategic networking, and exclusive experiences. Limited to 50-100 select participants.
+              </p>
+            </div>
+            <div className="aspect-video bg-[url('/boat.jpg')] bg-center bg-cover rounded-md"></div>
           </TabsContent>
         </Tabs>
       </div>

@@ -15,6 +15,11 @@ export default function FeaturedOffers() {
       icon: "📈"
     },
     {
+      title: "Community Building",
+      description: "Join our thriving network of entrepreneurs for ongoing support, resources, and collaborative growth opportunities.",
+      icon: "👥"
+    },
+    {
       title: "Curated Events",
       description: "Exclusive gatherings in remarkable locations designed to foster deep connection.",
       icon: "🥂"
@@ -26,7 +31,7 @@ export default function FeaturedOffers() {
       <div className="container mx-auto px-4">
         <h2 className="font-spartan text-3xl md:text-4xl font-bold text-center mb-16">Featured Offerings</h2>
         
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
           {offers.map((offer, index) => (
             <Card key={index} className="bg-cream border-none hover:shadow-lg transition-shadow">
               <CardHeader>

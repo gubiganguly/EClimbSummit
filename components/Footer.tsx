@@ -6,7 +6,9 @@ export default function Footer() {
       <div className="container mx-auto px-4">
         <div className="flex flex-col md:flex-row justify-between items-center">
           <div className="mb-8 md:mb-0">
-            <h3 className="font-spartan text-2xl font-bold">SUMMIT</h3>
+            <div className="mb-1">
+              <img src="/logo.png" alt="SUMMIT Logo" width={180} height={63} className="h-auto" />
+            </div>
             <p className="mt-2 text-cream/70 font-pinyon text-xl">Curated with Intention.</p>
           </div>
           
@@ -30,7 +32,7 @@ export default function Footer() {
         </div>
         
         <div className="mt-12 pt-8 border-t border-cream/20 text-center text-cream/50 text-sm">
-          &copy; {new Date().getFullYear()} Summit. All rights reserved.
+          &copy; {new Date().getFullYear()} eclimbSUMMIT. All rights reserved.
         </div>
       </div>
     </footer>

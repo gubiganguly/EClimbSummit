@@ -1,10 +1,11 @@
-import { collection, addDoc, serverTimestamp, getDocs, query, orderBy } from 'firebase/firestore';
+import { collection, addDoc, serverTimestamp, getDocs, query, orderBy, doc, deleteDoc } from 'firebase/firestore';
 import { FIRESTORE_DB } from '../config';
 
 export interface Lead {
   name: string;
   business: string;
   email: string;
+  phone: string;
   createdAt: any;
 }
 
@@ -44,5 +45,16 @@ export const getLeads = async (): Promise<LeadWithId[]> => {
   } catch (error) {
     console.error('Error fetching leads:', error);
     return [];
+  }
+};
+
+export const deleteLead = async (leadId: string) => {
+  try {
+    const leadRef = doc(FIRESTORE_DB, 'leads', leadId);
+    await deleteDoc(leadRef);
+    return { success: true };
+  } catch (error) {
+    console.error('Error deleting lead:', error);
+    return { success: false, error };
   }
 };

@@ -6,25 +6,28 @@ export default function ImageGallery() {
         
         <div className="grid grid-cols-2 md:grid-cols-4 gap-3 md:gap-4">
           <div className="aspect-square bg-forest-green/30 rounded-md overflow-hidden">
-            <div className="w-full h-full bg-[url('/gallery-1.jpg')] bg-center bg-cover hover:scale-105 transition-transform duration-500"></div>
+            <div className="w-full h-full bg-[url('/boat.jpg')] bg-center bg-cover hover:scale-105 transition-transform duration-500"></div>
           </div>
           <div className="aspect-square bg-forest-green/30 rounded-md overflow-hidden">
-            <div className="w-full h-full bg-[url('/gallery-2.jpg')] bg-center bg-cover hover:scale-105 transition-transform duration-500"></div>
-          </div>
-          <div className="aspect-square bg-forest-green/30 rounded-md overflow-hidden">
-            <div className="w-full h-full bg-[url('/gallery-3.jpg')] bg-center bg-cover hover:scale-105 transition-transform duration-500"></div>
-          </div>
-          <div className="aspect-square bg-forest-green/30 rounded-md overflow-hidden">
-            <div className="w-full h-full bg-[url('/gallery-4.jpg')] bg-center bg-cover hover:scale-105 transition-transform duration-500"></div>
+            <div className="w-full h-full bg-[url('/private_retreat.jpg')] bg-center bg-cover hover:scale-105 transition-transform duration-500"></div>
           </div>
           <div className="aspect-square bg-forest-green/30 rounded-md overflow-hidden md:col-span-2">
-            <div className="w-full h-full bg-[url('/gallery-5.jpg')] bg-center bg-cover hover:scale-105 transition-transform duration-500"></div>
+            <div className="w-full h-full bg-[url('/Dinner-Phuket.jpg')] bg-center bg-cover hover:scale-105 transition-transform duration-500"></div>
           </div>
-          <div className="aspect-square bg-forest-green/30 rounded-md overflow-hidden">
-            <div className="w-full h-full bg-[url('/gallery-6.jpg')] bg-center bg-cover hover:scale-105 transition-transform duration-500"></div>
+          <div className="aspect-square bg-forest-green/30 rounded-md overflow-hidden md:col-span-2">
+            <div className="w-full h-full">
+              <video 
+                className="w-full h-full object-cover hover:scale-105 transition-transform duration-500"
+                src="/instdown.MP4"
+                autoPlay
+                muted
+                loop
+                playsInline
+              />
+            </div>
           </div>
-          <div className="aspect-square bg-forest-green/30 rounded-md overflow-hidden">
-            <div className="w-full h-full bg-[url('/gallery-7.jpg')] bg-center bg-cover hover:scale-105 transition-transform duration-500"></div>
+          <div className="aspect-square bg-forest-green/30 rounded-md overflow-hidden md:col-span-2">
+            <div className="w-full h-full bg-[url('/Eclimb-London.jpg')] bg-center bg-cover hover:scale-105 transition-transform duration-500"></div>
           </div>
         </div>
       </div>

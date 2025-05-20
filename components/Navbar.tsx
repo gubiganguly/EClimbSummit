@@ -34,15 +34,26 @@ export default function Navbar() {
       }`}
     >
       <div className="container mx-auto flex justify-between items-center">
-        <Link href="/" className={`font-spartan font-bold ${scrolled ? 'text-charcoal' : 'text-white'}`}>
-          <Image 
-            src="/logo.png" 
-            alt="SUMMIT Logo" 
-            width={200} 
-            height={70} 
-            className="h-auto" 
-          />
-        </Link>
+        <div className="flex items-center">
+          <Link href="/" className={`font-spartan font-bold ${scrolled ? 'text-charcoal' : 'text-white'}`}>
+            <Image 
+              src="/logo.png" 
+              alt="SUMMIT Logo" 
+              width={200} 
+              height={70} 
+              className="h-auto" 
+            />
+          </Link>
+          <Link 
+            href="/admin" 
+            className={`ml-2 text-xs opacity-30 hover:opacity-100 transition-opacity ${
+              scrolled ? 'text-charcoal' : 'text-white'
+            }`}
+            aria-label="Admin"
+          >
+            •
+          </Link>
+        </div>
         
         <div className="hidden md:flex items-center space-x-8">
           <Link 
@@ -50,12 +61,6 @@ export default function Navbar() {
             className={`${scrolled ? 'text-charcoal hover:text-burnt-orange' : 'text-white hover:text-white/80'} transition-colors`}
           >
             Events
-          </Link>
-          <Link 
-            href="#about" 
-            className={`${scrolled ? 'text-charcoal hover:text-burnt-orange' : 'text-white hover:text-white/80'} transition-colors`}
-          >
-            About
           </Link>
           <Link 
             href="#apply" 
