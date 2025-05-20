@@ -22,12 +22,14 @@ export default function EventPage() {
   const [formData, setFormData] = useState({
     name: '',
     business: '',
-    email: ''
+    email: '',
+    phone: ''
   });
   const [errors, setErrors] = useState({
     name: '',
     business: '',
-    email: ''
+    email: '',
+    phone: ''
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSubmitted, setIsSubmitted] = useState(false);
@@ -63,7 +65,7 @@ export default function EventPage() {
   
   const validateForm = () => {
     let valid = true;
-    const newErrors = { name: '', business: '', email: '' };
+    const newErrors = { name: '', business: '', email: '', phone: '' };
     
     if (!formData.name.trim()) {
       newErrors.name = 'Name is required';
@@ -83,6 +85,11 @@ export default function EventPage() {
       valid = false;
     }
     
+    if (!formData.phone.trim()) {
+      newErrors.phone = 'Phone number is required';
+      valid = false;
+    }
+    
     setErrors(newErrors);
     return valid;
   };
@@ -98,12 +105,13 @@ export default function EventPage() {
       const result = await addAttendeeToEvent(eventId, {
         name: formData.name,
         business: formData.business,
-        email: formData.email
+        email: formData.email,
+        phone: formData.phone
       });
       
       if (result.success) {
         setIsSubmitted(true);
-        setFormData({ name: '', business: '', email: '' });
+        setFormData({ name: '', business: '', email: '', phone: '' });
       }
     } catch (error) {
       console.error('Form submission error:', error);
@@ -123,48 +131,50 @@ export default function EventPage() {
   return (
     <div className="min-h-screen bg-cream flex flex-col">
       <Navbar />
-      <main className="flex-grow pt-24">
-        <div className="container mx-auto px-4">
-          <Link href="/#events" className="inline-flex items-center text-forest-green mb-6 hover:underline">
+      <main className="flex-grow pt-16 md:pt-24">
+        <div className="container mx-auto px-4 sm:px-6">
+          <Link href="/#events" className="inline-flex items-center text-forest-green mb-4 md:mb-6 hover:underline">
             <ArrowLeft className="h-4 w-4 mr-2" />
             Back to Events
           </Link>
           
-          <div className="grid grid-cols-1 lg:grid-cols-3 gap-10">
+          <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 md:gap-10">
             <div className="lg:col-span-2">
-              <div className="h-80 md:h-96 bg-forest-green/20 rounded-xl overflow-hidden mb-6">
+              <div className="h-60 sm:h-72 md:h-96 bg-forest-green/20 rounded-xl overflow-hidden mb-4 md:mb-6">
                 <div
                   className="w-full h-full bg-center bg-cover"
                   style={{ backgroundImage: `url('${event?.image || "/placeholder-event.jpg"}')` }}
                 ></div>
               </div>
               
-              <h1 className="font-spartan text-4xl font-bold mb-4">{event?.title}</h1>
+              <h1 className="font-spartan text-3xl md:text-4xl font-bold mb-4">{event?.title}</h1>
               
-              <div className="flex flex-wrap gap-4 mb-6">
-                <div className="flex items-center text-charcoal/70 bg-white px-4 py-2 rounded-full shadow-sm">
-                  <CalendarDays className="h-5 w-5 mr-2 text-burnt-orange" />
+              <div className="flex flex-wrap gap-2 md:gap-4 mb-6">
+                <div className="flex items-center text-charcoal/70 bg-white px-3 py-2 text-sm md:text-base md:px-4 rounded-full shadow-sm">
+                  <CalendarDays className="h-4 w-4 md:h-5 md:w-5 mr-1 md:mr-2 text-burnt-orange" />
                   <span>{event?.date}</span>
                 </div>
-                <div className="flex items-center text-charcoal/70 bg-white px-4 py-2 rounded-full shadow-sm">
-                  <MapPin className="h-5 w-5 mr-2 text-burnt-orange" />
+                <div className="flex items-center text-charcoal/70 bg-white px-3 py-2 text-sm md:text-base md:px-4 rounded-full shadow-sm">
+                  <MapPin className="h-4 w-4 md:h-5 md:w-5 mr-1 md:mr-2 text-burnt-orange" />
                   <span>{event?.location}</span>
                 </div>
-                <div className="flex items-center text-charcoal/70 bg-white px-4 py-2 rounded-full shadow-sm">
-                  <Users className="h-5 w-5 mr-2 text-burnt-orange" />
+                <div className="flex items-center text-charcoal/70 bg-white px-3 py-2 text-sm md:text-base md:px-4 rounded-full shadow-sm">
+                  <Users className="h-4 w-4 md:h-5 md:w-5 mr-1 md:mr-2 text-burnt-orange" />
                   <span>Capacity: {event?.capacity}</span>
                 </div>
               </div>
               
-              <div className="prose max-w-none mb-10">
-                <h2 className="font-spartan text-2xl font-bold mb-3">About This Event</h2>
-                <p className="text-charcoal/80 text-lg">{event?.description}</p>
+              <div className="prose max-w-none mb-8 md:mb-10">
+                <h2 className="font-spartan text-xl md:text-2xl font-bold mb-3">About This Event</h2>
+                <p className="text-charcoal/80 text-base md:text-lg whitespace-pre-line">
+                  {event?.description}
+                </p>
               </div>
             </div>
             
             <div className="lg:col-span-1">
-              <div className="bg-white rounded-xl shadow-md p-6 sticky top-24">
-                <h2 className="font-spartan text-2xl font-bold mb-4">Request to Attend</h2>
+              <div className="bg-white rounded-xl shadow-md p-4 md:p-6 sticky top-16 md:top-24">
+                <h2 className="font-spartan text-xl md:text-2xl font-bold mb-4">Request to Attend</h2>
                 
                 {isSubmitted ? (
                   <div className="text-center py-6">
@@ -228,6 +238,22 @@ export default function EventPage() {
                         className="border-taupe"
                       />
                       {errors.email && <p className="mt-1 text-sm text-burnt-orange">{errors.email}</p>}
+                    </div>
+                    
+                    <div>
+                      <label htmlFor="phone" className="block mb-1 font-medium text-sm">
+                        Phone Number
+                      </label>
+                      <Input
+                        id="phone"
+                        name="phone"
+                        type="tel"
+                        value={formData.phone}
+                        onChange={handleChange}
+                        placeholder="(555) 555-5555"
+                        className="border-taupe"
+                      />
+                      {errors.phone && <p className="mt-1 text-sm text-burnt-orange">{errors.phone}</p>}
                     </div>
                     
                     <Button 

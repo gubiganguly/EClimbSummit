@@ -631,7 +631,7 @@ export default function AdminPage() {
                               </CardHeader>
                               
                               <CardContent className="px-4 py-2">
-                                <p className="text-sm text-gray-600 line-clamp-2">
+                                <p className="text-sm text-gray-600 line-clamp-2 whitespace-pre-line">
                                   {event.description}
                                 </p>
                               </CardContent>
@@ -908,7 +908,7 @@ export default function AdminPage() {
                     <Button 
                       type="submit" 
                       disabled={eventSubmitting}
-                      className="w-full bg-forest-green hover:bg-forest-green/90 text-black transition-all hover:scale-[1.02] hover:shadow-md"
+                      className="w-full bg-green-600 hover:bg-green-700 text-white transition-all hover:scale-[1.02] hover:shadow-md"
                     >
                       {eventSubmitting ? (
                         <span className="flex items-center justify-center">

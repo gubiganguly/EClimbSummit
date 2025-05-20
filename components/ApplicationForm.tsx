@@ -187,7 +187,7 @@ export default function ApplicationForm() {
               <Button 
                 type="submit" 
                 disabled={isSubmitting}
-                className="w-full bg-cream text-burnt-orange hover:bg-cream/90 font-medium py-6"
+                className="w-full bg-green-600 text-white hover:bg-green-700 font-medium py-6"
               >
                 {isSubmitting ? (
                   <span className="flex items-center justify-center">
